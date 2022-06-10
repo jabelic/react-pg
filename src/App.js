@@ -16,12 +16,12 @@ function App() {
   
   /** レンダリングが起きたタイミングで発火する. onMountedみたいな? */
   /** 
-   * 第一引数: callback method, returnでclean up処理
-   * 第二引数: 依存させたいobjectのlist?
+   * 第一引数: callback method, returnでclean up処理(DB connection, timer, eventListener)
+   * 第二引数: 依存させたいobjectのlist. 何も指定しないと全てに依存する? []を指定すると依存するstate(object)はなくなる
   */
   useEffect(() => {
     console.log('App.js:useEffect')
-    fetchLanguages() // APIから取得するイメージ
+    fetchLanguages()// fetchする
   }, [])
 
   const fetchLanguages = async () =>{
@@ -38,7 +38,6 @@ function App() {
     <div className="section">
        <header>
         <ul>
-          {/* 引数とれんの？ */}
           <li><button onClick={() => setTab('list')}>リスト</button></li>
           <li><button onClick={() => setTab('form')}>フォーム</button></li>
         </ul>

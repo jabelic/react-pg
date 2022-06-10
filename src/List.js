@@ -1,5 +1,11 @@
-
+import { useEffect } from 'react'
 export const List = ({ langs, title }) => {
+    useEffect(()=>{
+        return ()=>{
+            console.debug('Listjs:unmounted')
+        }
+    }
+    )
     return(
         <div>
             <h4>{ title }</h4>

@@ -1,4 +1,17 @@
 import { useEffect } from 'react'
+import styled from 'styled-components';
+import { TabBodyContainer } from "./components/tab-body-container";
+
+
+const ListItem = styled.div`
+  padding: 8px 16px;
+  
+  &:nth-child(n+2) {
+    border-top: 1px solid #D9DBDE;
+  }
+`
+
+// { langs, title }はPropsからの分割代入
 export const List = ({ langs, title }) => {
     useEffect(()=>{
         return ()=>{
@@ -7,14 +20,14 @@ export const List = ({ langs, title }) => {
     }
     )
     return(
-        <div>
-            <h4>{ title }</h4>
-            <div>一覧</div>
+        <TabBodyContainer title={title}>
+            <div>
             {
                 langs.map((lang, index) => {
-                    return <div key={index}>{ lang }</div>
-                    })
+                return <ListItem key={index}>{ lang }</ListItem>
+                })
             }
-        </div>
+            </div>
+        </TabBodyContainer>
     )
 }
